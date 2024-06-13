@@ -14,6 +14,7 @@ var app = builder.Build();
 
 app.MapDefaultEndpoints();
 
+// call to build minimal api endpoints
 app.NewVersionedApi("Catalog")
    .MapCatalogApiV1();
 

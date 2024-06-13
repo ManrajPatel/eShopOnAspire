@@ -27,6 +27,9 @@ app.UseStaticFiles();
 
 app.MapRazorComponents<App>().AddInteractiveServerRenderMode();
 
+//  first argument is the pattern for the incoming request path
+//  second argument is the address of the server to forward the request to
+// the last argument is the target path on the forwarded server
 app.MapForwarder("/product-images/{id}", "http://catalog-api", "/api/catalog/items/{id}/pic");
 
 app.Run();

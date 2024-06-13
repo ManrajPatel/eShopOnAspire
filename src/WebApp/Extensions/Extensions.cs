@@ -38,6 +38,8 @@ public static class Extensions
         builder.Services.AddGrpcClient<Basket.BasketClient>(o => o.Address = new("http://basket-api"))
             .AddAuthToken();
 
+        // Any http calls made from CatalogService will use the specified base address as the default api address
+        // In service class we do not need to mention the base url
         builder.Services.AddHttpClient<CatalogService>(o => o.BaseAddress = new("http://catalog-api"))
             .AddApiVersion(1.0)
             .AddAuthToken();

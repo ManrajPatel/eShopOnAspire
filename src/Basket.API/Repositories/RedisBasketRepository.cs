@@ -3,6 +3,11 @@ using eShop.Basket.API.Model;
 
 namespace eShop.Basket.API.Repositories;
 
+/// <summary>
+/// This class is responsible for storing and retrieving shopping baskets from the Redis database.
+/// </summary>
+/// <param name="logger"></param>
+/// <param name="redis"></param>
 public class RedisBasketRepository(ILogger<RedisBasketRepository> logger, IConnectionMultiplexer redis) : IBasketRepository
 {
     private readonly IDatabase _database = redis.GetDatabase();

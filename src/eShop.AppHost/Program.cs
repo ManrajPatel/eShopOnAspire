@@ -9,7 +9,8 @@ var redis = builder.AddRedis("redis");
 var rabbitMq = builder.AddRabbitMQ("eventbus");
 var postgres = builder.AddPostgres("postgres")
     .WithImage("ankane/pgvector")
-    .WithImageTag("latest");
+    .WithImageTag("latest")
+    .WithPgAdmin(); // add PGAdmin container to administer PostGres database
 
 var catalogDb = postgres.AddDatabase("catalogdb");
 var identityDb = postgres.AddDatabase("identitydb");
