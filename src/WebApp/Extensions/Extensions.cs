@@ -74,10 +74,14 @@ public static class Extensions
         services.AddAuthorization();
         services.AddAuthentication(options =>
         {
+            // Default scheme will tell the system how to verify the authenticated user in all subsequent requests
             options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            // Challenge scheme will redirect user to login page if an unauthenticated user tries to access restricted resource
             options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
         })
+        // cookie configuration because default scheme is set to Cookie authentication.
         .AddCookie(options => options.ExpireTimeSpan = TimeSpan.FromMinutes(sessionCookieLifetime))
+        // Openid configuration because challenge scheme is set to OpenId authentication.
         .AddOpenIdConnect(options =>
         {
             options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;

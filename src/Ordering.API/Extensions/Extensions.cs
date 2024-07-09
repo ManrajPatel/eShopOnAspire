@@ -16,6 +16,8 @@
         });
         builder.EnrichNpgsqlDbContext<OrderingContext>();
 
+        // This will apply latest Domain model changes to database
+        // Make sure you have manually run 'dotnet ef migrations add <migration name>' command to create migration for latest changes
         services.AddMigration<OrderingContext, OrderingContextSeed>();
 
         // Add the integration services that consume the DbContext
